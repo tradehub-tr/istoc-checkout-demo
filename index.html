@@ -1,0 +1,344 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/checkout-original.css"><link rel="stylesheet" href="preview.css"><title>Ödeme ve B2B sözleşmeler · İstoç tasarım önizlemesi</title></head><body><div class="demo-toolbar"><div><span class="preview-dot"></span><strong>Tasarım önizlemesi</strong><span class="toolbar-note">Örnek bilgiler · Gerçek sipariş ve ödeme oluşturulmaz</span></div><div class="demo-scenario" role="group" aria-label="Ödeme alıcısı senaryosu"><button data-scenario="seller" aria-pressed="true">Satıcıya ödeme</button><button data-scenario="istoc" aria-pressed="false">İstoç’a ödeme</button></div></div>
+    <header class="w-full bg-white border-b border-[#e5e5e5]">
+      <div class="max-w-[1680px] mx-auto px-3 sm:px-4 h-[50px] sm:h-[60px] flex items-center justify-between">
+        <a href="./" class="flex items-center shrink-0" aria-label="Ana Sayfa">
+          <img src="assets/istoc-logo.png" alt="iStoc" width="87" height="32" class="h-[18px] min-[400px]:h-[22px] sm:h-[25px] w-auto shrink-0">
+        </a>
+        
+      <button aria-label="Örnek hesap" class="demo-account" data-doc="platform"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="7" r="3"></circle><path d="M5 21v-2a7 7 0 0 1 14 0v2Z"></path></svg></button>
+    
+      </div>
+    </header>
+  <main><nav class="demo-breadcrumb" aria-label="Breadcrumb"><a href="./" data-action="cart-preview">Ana Sayfa</a><span>›</span><a href="#checkout-items" data-action="cart-preview">Sepetim</a><span>›</span><span>Sipariş Onayı</span></nav>
+    <div class="sc-checkout-page bg-[#fafafa] max-w-[1680px] mx-auto px-3 sm:px-4 py-4 sm:py-5">
+      <div class="flex flex-col xl:flex-row gap-4 xl:gap-5 items-start w-full relative">
+        <!-- Left Column (Form Area) -->
+        <div class="w-full xl:flex-1 xl:min-w-0 flex flex-col gap-3">
+          <header class="co-page-head flex items-start justify-between gap-8 mb-[18px] pt-1.5">
+      <div class="co-page-head-l flex-1 min-w-0">
+        <h1 class="co-page-title text-[22px] sm:text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-text-heading m-0">Sipariş Onayı</h1>
+        <p class="co-page-sub text-text-tertiary mt-1.5 max-w-[56ch] text-[12.5px] sm:text-[13.5px]">1 tedarikçiden 50 ürün — adresini, ödeme yöntemini ve sevkiyat seçimlerini doğrula.</p>
+      </div>
+    </header><section class="checkout-section bg-white border border-[#e5e5e5] rounded-md overflow-hidden" id="shipping-address-section">
+      <div class="checkout-section__header flex items-center gap-2 sm:gap-3 px-4 sm:px-[22px] py-[12px] sm:py-[18px]">
+        <span class="checkout-section__icon hidden sm:inline-flex items-center justify-center w-8 h-8 min-w-[32px] rounded-md bg-[#fafafa] text-text-secondary p-[7px]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path>
+          </svg>
+        </span>
+        <h2 class="checkout-section__title flex-1 text-start text-[13px] sm:text-[15px] font-semibold text-[#1a1a1a] tracking-[-0.005em] whitespace-nowrap truncate">Teslimat adresi</h2>
+        <!-- Hazır rozeti: adres seçili -->
+        <span class="co-pill co-pill-ok inline-flex items-center gap-1 px-1.5 sm:px-2 py-[2px] sm:py-[3px] rounded-full text-[10px] sm:text-[11.5px] font-medium bg-[#e8f5ed] text-[#1f7a4d] border-transparent border whitespace-nowrap shrink-0">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-2.5 h-2.5 sm:w-3 sm:h-3"><path d="M20 6 9 17l-5-5"></path></svg>
+          Hazır
+        </span>
+        <!-- Zorunlu alan rozeti -->
+        
+        <!-- Düzenle (adres seçili iken header'da link) -->
+        <button type="button" class="co-link-btn th-no-press appearance-none bg-transparent border-0 px-1.5 sm:px-2 py-1 text-text-secondary inline-flex items-center gap-1 text-[12px] sm:text-[13px] font-medium rounded-md cursor-pointer no-underline hover:text-[#0a0a0a] hover:bg-[#fafafa] focus:outline-none shrink-0" data-action="edit-address">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-3.5 sm:h-3.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          Düzenle
+        </button>
+      </div>
+
+      <div class="checkout-section__content px-4 sm:px-[22px] pb-4 sm:pb-[22px]"><div class="co-addr-block p-3 sm:p-[14px_16px] bg-[#fafafa] rounded-md border border-[#e5e5e5]">
+          <div class="co-addr-name font-semibold mb-0.5 sm:mb-1 text-[14px] sm:text-base text-[#1a1a1a]">Örnek Alıcı Ticaret Ltd. Şti. / Satın Alma</div>
+          <div class="co-addr-line text-[12px] sm:text-[13px] text-text-secondary leading-[1.5]" id="shipping-address-text">Örnek teslimat adresi, İstoç Ticaret Merkezi, Bağcılar / İstanbul</div>
+          <div class="co-addr-line muted text-[12px] sm:text-[13px] text-text-tertiary mt-0.5">İşletme teslimat adresi · Türkiye</div>
+        </div></div></section><section id="checkout-billing" class="checkout-section checkout-section--billing bg-white border border-[#e5e5e5] rounded-md overflow-hidden">
+      <!-- Card head -->
+      <div class="checkout-section__header flex items-center gap-2 sm:gap-3 px-4 sm:px-[22px] py-[12px] sm:py-[18px]">
+        <span class="checkout-section__icon hidden sm:inline-flex items-center justify-center w-8 h-8 min-w-[32px] rounded-md bg-[#fafafa] text-text-secondary p-[7px]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6"></path>
+          </svg>
+        </span>
+
+        <h2 class="checkout-section__title flex-1 text-[13px] sm:text-[15px] font-semibold text-[#1a1a1a] tracking-[-0.005em] whitespace-nowrap truncate">Fatura bilgileri</h2>
+
+        <!-- Tip rozeti (kapalı durumdayken bile görünür) -->
+        <span class="co-pill co-pill-ghost inline-flex items-center gap-1 px-1.5 sm:px-2 py-[2px] sm:py-[3px] rounded-full text-[10px] sm:text-[11.5px] font-medium bg-transparent text-text-secondary border border-[#e5e5e5] whitespace-nowrap shrink-0">Şirket / Kurumsal</span>
+
+        <!-- Eksik rozeti -->
+        
+
+        <button type="button" class="co-link-btn th-no-press appearance-none bg-transparent border-0 px-1.5 sm:px-2 py-1 text-text-secondary inline-flex items-center gap-1 text-[12px] sm:text-[13px] font-medium rounded-md cursor-pointer no-underline hover:text-[#0a0a0a] hover:bg-[#fafafa] focus:outline-none shrink-0" data-collapse="billing-content">Kapat</button>
+      </div>
+
+      <!-- Kapalı durum: summary -->
+      
+
+      <!-- Açık durum: edit -->
+      <div class="checkout-section__content px-4 sm:px-[22px] pb-4 sm:pb-[22px] flex flex-col gap-3.5" id="billing-content">
+
+        <!-- Tip toggle: Bireysel / Şirket -->
+        <div class="co-billing-toggle grid grid-cols-2 max-[720px]:grid-cols-1 gap-[10px]" role="tablist">
+          <button type="button" role="tab" class="co-billing-toggle-card bg-white border border-[#e5e5e5] rounded-md p-[12px_14px] sm:p-[14px_16px] text-start flex flex-col gap-0.5 sm:gap-1 transition-[border-color,background-color,box-shadow] duration-150 motion-reduce:transition-none cursor-pointer hover:border-[#d4d4d4]" data-billtype="sole" aria-selected="false">
+            <div class="co-bt-title font-semibold text-[12.5px] sm:text-[13.5px] text-[#1a1a1a]">Şahıs işletmesi</div>
+            <div class="co-bt-sub text-[11px] sm:text-[12px] text-text-tertiary">Ticari amaçlı alım</div>
+          </button>
+          <button type="button" role="tab" class="co-billing-toggle-card bg-white border border-[#e5e5e5] rounded-md p-[12px_14px] sm:p-[14px_16px] text-start flex flex-col gap-0.5 sm:gap-1 transition-[border-color,background-color,box-shadow] duration-150 motion-reduce:transition-none cursor-pointer hover:border-[#d4d4d4] demo-selected" data-billtype="company" aria-selected="true">
+            <div class="co-bt-title font-semibold text-[12.5px] sm:text-[13.5px] text-[#1a1a1a]">Şirket / Kurumsal</div>
+            <div class="co-bt-sub text-[11px] sm:text-[12px] text-text-tertiary">Vergi numarası ile fatura</div>
+          </button>
+        </div>
+
+        <!-- Bireysel -->
+        
+
+        <!-- Şirket -->
+        <div class="flex flex-col gap-3 mt-1">
+          
+    <div class="flex flex-col gap-1">
+      <label for="billing-company-name" class="text-[11.5px] sm:text-[12.5px] font-medium text-text-secondary">
+        Şirket ünvanı <span class="text-[#b42318]">*</span>
+      </label>
+      <input type="text" id="billing-company-name" autocomplete="off" placeholder="Acme Tic. Ltd. Şti." class="w-full h-10 sm:h-[44px] px-3 text-[13px] sm:text-[14px] text-[#1a1a1a] bg-white border rounded-md outline-none transition-colors placeholder:text-text-tertiary focus:border-[var(--btn-bg,#ff8600)] focus:shadow-[0_0_0_3px_rgba(245,184,0,0.12)]" data-demo-field="companyName">
+      <span class="text-[11px] sm:text-[12px] text-[#b42318]"></span>
+    </div>
+  
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            
+    <div class="flex flex-col gap-1">
+      <label for="billing-tax-office" class="text-[11.5px] sm:text-[12.5px] font-medium text-text-secondary">
+        Vergi dairesi <span class="text-[#b42318]">*</span>
+      </label>
+      <input type="text" id="billing-tax-office" autocomplete="off" placeholder="Kadıköy" class="w-full h-10 sm:h-[44px] px-3 text-[13px] sm:text-[14px] text-[#1a1a1a] bg-white border rounded-md outline-none transition-colors placeholder:text-text-tertiary focus:border-[var(--btn-bg,#ff8600)] focus:shadow-[0_0_0_3px_rgba(245,184,0,0.12)]" data-demo-field="taxOffice">
+      <span class="text-[11px] sm:text-[12px] text-[#b42318]"></span>
+    </div>
+  
+            
+    <div class="flex flex-col gap-1">
+      <label for="billing-tax-number" class="text-[11.5px] sm:text-[12.5px] font-medium text-text-secondary">
+        Vergi numarası (VKN) <span class="text-[#b42318]">*</span>
+      </label>
+      <input type="tel" id="billing-tax-number" autocomplete="off" placeholder="Örnek vergi numarası" maxlength="10" minlength="10" class="w-full h-10 sm:h-[44px] px-3 text-[13px] sm:text-[14px] text-[#1a1a1a] bg-white border rounded-md outline-none transition-colors placeholder:text-text-tertiary focus:border-[var(--btn-bg,#ff8600)] focus:shadow-[0_0_0_3px_rgba(245,184,0,0.12)]" data-demo-field="taxNumber">
+      <span class="text-[11px] sm:text-[12px] text-[#b42318]"></span>
+    </div>
+  
+          </div>
+          <label class="flex items-center gap-2 sm:gap-2.5 cursor-pointer text-[12px] sm:text-[13px] text-text-secondary select-none">
+            <span class="relative flex items-center justify-center w-4 h-4 sm:w-[18px] sm:h-[18px] rounded-[4px] border transition-colors shrink-0">
+              <input type="checkbox" class="absolute inset-0 opacity-0 cursor-pointer" data-demo-field="eInvoice" value="on">
+              <svg class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+            </span>
+            <span class="font-medium">e-Fatura mükellefiyim</span>
+            <span class="text-[11px] sm:text-[12px] text-text-tertiary">(faturanız elektronik olarak gönderilir)</span>
+          </label>
+        </div>
+
+        <!-- Adres -->
+        <div class="border-t border-dashed border-[#e5e5e5] pt-3 flex flex-col gap-3">
+
+          <label class="flex items-center gap-2 sm:gap-2.5 cursor-pointer text-[12px] sm:text-[13px] text-[#1a1a1a] select-none">
+            <span class="relative flex items-center justify-center w-4 h-4 sm:w-[18px] sm:h-[18px] rounded-[4px] border transition-colors shrink-0">
+              <input type="checkbox" class="absolute inset-0 opacity-0 cursor-pointer" data-demo-field="sameAsShipping" value="on">
+              <svg class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+            </span>
+            <span class="font-medium">Fatura adresi teslimat adresi ile aynı</span>
+          </label>
+
+          <!-- sameAsShipping: pill -->
+          <div class="co-billing-addr-pill flex items-center gap-2 p-[10px_12px] sm:p-[12px_14px] bg-[#fafafa] border border-[#e5e5e5] rounded-md text-[12px] sm:text-[13px] text-text-secondary">
+            <svg class="w-4 h-4 text-text-tertiary shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <circle cx="12" cy="11" r="3" stroke-linecap="round" stroke-linejoin="round"></circle>
+            </svg>
+            <span>Teslimat adresinde belirtilen adres fatura adresi olarak kullanılacak.</span>
+          </div>
+
+          <!-- !sameAsShipping: form -->
+          
+        </div>
+      </div>
+    </section><section class="checkout-section bg-white border border-[#e5e5e5] rounded-md overflow-hidden" id="checkout-payment"><div class="checkout-section__header flex items-center gap-2 sm:gap-3 px-4 sm:px-[22px] py-[12px] sm:py-[18px]"><span class="checkout-section__icon hidden sm:inline-flex items-center justify-center w-8 h-8 min-w-[32px] rounded-md bg-[#fafafa] text-text-secondary"><svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18"></path></svg></span><h2 class="checkout-section__title flex-1 text-[13px] sm:text-[15px] font-semibold text-[#1a1a1a]">Ödeme yöntemi</h2><button type="button" class="demo-link-button" data-collapse="payment-content" aria-expanded="true">Kapat</button></div><div class="checkout-section__content px-4 sm:px-[22px] pb-4 sm:pb-[22px]" id="payment-content"><p id="method-payee-label" class="demo-eyebrow">ÖRNEK ELEKTRİK İÇİN ÖDEME YÖNTEMİ</p><div class="demo-method-grid" role="radiogroup" aria-label="Ödeme yöntemi"><label class="demo-method is-selected"><input type="radio" name="method" value="bank" checked=""><span><strong>Banka Havalesi / EFT <span class="method-badge">Önerilen</span></strong><small>Hesap bilgileriyle banka üzerinden ödeme yapın.</small></span></label><label class="demo-method"><input type="radio" name="method" value="card"><span><strong>Kredi / banka kartı</strong><small>Kartınızla tek çekim ödeme yapın.</small></span></label></div><div id="payment-detail" class="demo-payment-detail"></div></div></section><section id="checkout-items" class="checkout-section bg-white border border-[#e5e5e5] rounded-md overflow-hidden" data-delivery-orders="[{&quot;orderId&quot;:&quot;demo&quot;,&quot;orderLabel&quot;:&quot;Sipariş 1&quot;,&quot;sellerId&quot;:&quot;ornek&quot;,&quot;sellerName&quot;:&quot;Örnek Elektrik&quot;,&quot;methods&quot;:[{&quot;id&quot;:&quot;standard&quot;,&quot;etaLabel&quot;:&quot;3–5 iş günü içinde sevk&quot;,&quot;shippingFee&quot;:250,&quot;isDefault&quot;:true}],&quot;products&quot;:[{&quot;id&quot;:&quot;priz&quot;,&quot;title&quot;:&quot;4’lü Topraklı Grup Priz · Anahtarlı · 2 m&quot;,&quot;moqLabel&quot;:&quot;Minimum sipariş: 22 adet&quot;,&quot;image&quot;:&quot;assets/urun.jpeg&quot;,&quot;skuLines&quot;:[{&quot;id&quot;:&quot;beyaz&quot;,&quot;image&quot;:&quot;assets/urun.jpeg&quot;,&quot;variantText&quot;:&quot;Beyaz · 2 metre · Standart ambalaj&quot;,&quot;unitPrice&quot;:632,&quot;quantity&quot;:50}]}]}]">
+      <div class="checkout-section__header w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-[22px] py-[12px] sm:py-[18px]">
+        <span class="checkout-section__icon hidden sm:inline-flex items-center justify-center w-8 h-8 min-w-[32px] rounded-md bg-[#fafafa] text-text-secondary p-[7px]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M3.27 6.96 12 12.01l8.73-5.05" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 22.08V12" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <h2 class="checkout-section__title flex-1 text-start text-[13px] sm:text-[15px] font-semibold text-[#1a1a1a] tracking-[-0.005em] whitespace-nowrap truncate">Ürünler ve teslimat seçenekleri</h2>
+        <span class="text-[11px] sm:text-[12px] text-text-tertiary whitespace-nowrap shrink-0">1 tedarikçi</span>
+      </div>
+      <div class="checkout-section__content p-0">
+        
+    <div class="p-0 border-t border-[#e5e5e5] first:border-t-0 mt-0">
+      <button type="button" class="th-no-press w-full flex items-center gap-2 sm:gap-3 m-0 px-4 sm:px-[22px] py-[10px] sm:py-[14px] rounded-none cursor-pointer hover:bg-[#fafafa] transition-colors select-none text-start" aria-controls="checkout-supplier-panel-0-64-65-6d-6f" data-checkout-supplier-trigger="0" aria-expanded="true">
+        <svg class="w-4 h-4 text-text-tertiary shrink-0 hidden sm:block" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <path d="M4 7h16M4 7l2-3h12l2 3M4 7v12a2 2 0 002 2h12a2 2 0 002-2V7" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <h3 class="text-[13px] sm:text-[14.5px] font-semibold text-[#1a1a1a] tracking-[-0.005em] flex-1 truncate">Örnek Elektrik</h3>
+        <span class="co-supplier-count hidden sm:inline text-[11.5px] font-medium text-text-secondary bg-[#fafafa] border border-[#e5e5e5] rounded-full px-2 py-[2px] whitespace-nowrap tracking-[0.01em]">50 ürün</span>
+        <span class="text-[12px] sm:text-[14px] font-semibold text-[#1a1a1a] whitespace-nowrap">₺31.600,00</span>
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-tertiary transition-transform duration-200 motion-reduce:transition-none shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!--
+        In a multi-supplier checkout, closed supplier bodies are not mounted at
+        all. This removes product-card DOM from the initial render. x-if is
+        deliberate here: x-collapse needs an element to remain mounted, which
+        would defeat the DOM saving. Nested product/SKU UI state is recreated
+        when this panel is reopened; checkout-level shipping and note state stay
+        on checkoutItemsDelivery and are therefore preserved.
+      -->
+      
+        <div id="checkout-supplier-panel-0-64-65-6d-6f" data-checkout-supplier-body="0" class="pt-1 px-4 sm:px-[22px] pb-4 sm:pb-[18px]">
+          
+    <div class="flex items-center justify-between gap-2 sm:gap-3 rounded-md border-[1.5px] border-[#1a1a1a] bg-white px-3 sm:px-4 py-2.5 sm:py-3">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#111827] shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+          <circle cx="7" cy="18" r="1.5"></circle>
+          <circle cx="17" cy="18" r="1.5"></circle>
+        </svg>
+        <div class="min-w-0">
+          <p class="text-[12.5px] sm:text-[13.5px] font-semibold text-[#111827] truncate">3–5 iş günü içinde sevk</p>
+          <p class="text-[11.5px] sm:text-[12.5px] text-text-tertiary mt-0.5">
+            Sevkiyat ücreti:
+            <strong class="text-[#111827]">₺250,00</strong>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+  
+
+          <div class="mt-4">
+            
+    <div class="co-product-card border border-[#e5e5e5] rounded-md bg-white overflow-hidden mt-[10px]">
+      <button type="button" class="co-product-head th-no-press w-full flex items-center gap-2 sm:gap-3 px-3 py-[10px] text-start cursor-pointer transition-colors hover:bg-[#fafafa]" data-collapse="product-lines" aria-expanded="true">
+        <img src="assets/urun.jpeg" alt="" width="48" height="48" decoding="async" class="w-10 h-10 sm:w-12 sm:h-12 rounded-md object-cover border border-[#e5e5e5] shrink-0">
+        <div class="flex-1 min-w-0">
+          <h4 class="text-[12.5px] sm:text-[13.5px] leading-[1.35] font-semibold text-[#1a1a1a] truncate">4’lü Topraklı Grup Priz · Anahtarlı · 2 m</h4>
+          <p class="text-[11px] sm:text-[11.5px] text-text-tertiary mt-0.5 leading-[1.4]">Minimum sipariş: 22 adet</p>
+          <p class="hidden sm:flex mt-1.5 flex-wrap items-center gap-x-2 gap-y-0.5 text-[12.5px] text-text-tertiary">
+            <span>1 varyant</span><span class="text-[#9ca3af]">·</span><span>50 adet</span>
+          </p>
+        </div>
+        <div class="co-product-end flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <span class="co-product-total hidden sm:inline whitespace-nowrap text-[12.5px] sm:text-[13.5px] font-semibold text-[#1a1a1a] tabular-nums">₺31.600,00</span>
+          <svg class="co-product-chev w-3.5 h-3.5 text-text-tertiary transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </button>
+      <div id="product-lines">
+        <div class="px-3 pb-3 space-y-2">
+          
+    <!-- Mobile: 2-col grid, image top-aligned. Desktop: 4-col with qty+total columns -->
+    <div class="grid grid-cols-[36px_1fr] sm:grid-cols-[40px_1fr_auto_auto] gap-x-2.5 gap-y-0 sm:gap-3 items-start sm:items-center rounded-md bg-[#fafafa] border border-[#e5e5e5] px-2.5 sm:px-[14px] py-2.5 sm:py-[10px]">
+      <img src="assets/urun.jpeg" alt="" width="40" height="40" decoding="async" class="w-9 h-9 sm:w-10 sm:h-10 rounded-md object-cover border border-[#e5e5e5] mt-0.5 sm:mt-0">
+      <div class="min-w-0">
+        
+        <p class="text-[12px] sm:text-[13px] text-text-secondary leading-[1.4]">Beyaz · 2 metre · Standart ambalaj</p>
+        <p class="text-[12px] sm:text-[13px] font-semibold text-[#1a1a1a] mt-1">₺632,00 <span class="font-normal text-text-tertiary">/adet</span></p>
+        <div class="flex items-center gap-2 sm:hidden mt-1 pt-1 border-t border-dashed border-[#e5e5e5]">
+          <span class="text-[11px] text-text-tertiary">x 50</span>
+          <span class="text-[12px] font-semibold text-[#1a1a1a]">₺31.600,00</span>
+        </div>
+      </div>
+      <span class="hidden sm:inline text-[13px] font-semibold text-[#1a1a1a]">x 50</span>
+      <span class="hidden sm:inline text-[13px] font-semibold text-[#1a1a1a]">₺31.600,00</span>
+    </div>
+  
+          
+        </div>
+        
+      </div>
+    </div>
+  
+            
+    <div class="mt-3 sm:mt-4">
+      
+        <button type="button" class="th-no-press inline-block text-[12px] sm:text-[13px] font-semibold underline text-text-secondary decoration-[#d4d4d4] underline-offset-[3px] hover:opacity-70" data-action="seller-note">
+          Tedarikçiye not ekle
+        </button>
+      
+      
+    </div>
+  
+          </div>
+        </div>
+      
+    </div>
+  
+      </div>
+      
+    
+  
+      
+    
+  
+    </section>
+        </div>
+
+        <!-- Right Column (Sticky Summary) -->
+        <!-- Sepet sayfasındaki özet kutusuyla (CartSummary, xl:w-[425px]) aynı genişlik: ürün şeridi iki sayfada aynı noktada taşar -->
+        <div class="w-full xl:w-[425px] flex-shrink-0 xl:sticky xl:top-[20px] self-start z-10">
+          
+    <div class="checkout-sidebar w-full p-4 sm:p-5 xl:p-[28px] bg-[#FFFFFF] border border-[#e5e5e5] rounded-md xl:max-h-[calc(100vh-48px)] overflow-y-auto [&amp;::-webkit-scrollbar]:w-[6px] [&amp;::-webkit-scrollbar-track]:bg-transparent [&amp;::-webkit-scrollbar-thumb]:bg-black/20 hover:[&amp;::-webkit-scrollbar-thumb]:bg-black/30 [&amp;::-webkit-scrollbar-thumb]:rounded-full">
+      <!-- Title -->
+      <div class="text-[16px] sm:text-[18px] font-bold leading-tight text-text-primary mb-5 font-inter">
+        <span>Sipariş özeti</span> (1 <span>ürün</span>)
+      </div>
+
+      <!-- Thumbnail Grid -->
+      
+    <div class="checkout-items-wrapper group relative mb-4"><button type="button" class="checkout-items-arrow absolute top-1/2 -translate-y-1/2 w-7 h-7 rounded-full border border-[#e5e5e5] bg-white flex items-center justify-center cursor-pointer z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-sm hover:bg-[#f5f5f5] -start-1.5" data-dir="left" aria-label="Sola kaydır">
+    <svg class="w-3.5 h-3.5 stroke-[#222] fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button><div class="checkout-items-images flex gap-2 overflow-x-auto scroll-smooth scrollbar-hide">
+      <div class="checkout-item-card relative w-14 h-14 min-w-[56px] max-[380px]:w-12 max-[380px]:h-12 max-[380px]:min-w-[48px] sm:w-16 sm:h-16 sm:min-w-[64px] rounded overflow-hidden border border-[#e5e5e5] flex-shrink-0">
+        <div class="block w-full h-full">
+          <img class="w-full h-full object-cover" src="assets/urun.jpeg" alt="" width="64" height="64" decoding="async">
+        </div>
+        <span data-qty-badge="" class="absolute bottom-0 end-0 bg-black/60 text-white rounded-ss text-[11px] font-bold leading-4 px-1 py-px">50</span>
+      </div></div><button type="button" class="checkout-items-arrow absolute top-1/2 -translate-y-1/2 w-7 h-7 rounded-full border border-[#e5e5e5] bg-white flex items-center justify-center cursor-pointer z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-sm hover:bg-[#f5f5f5] -end-1.5" data-dir="right" aria-label="Sağa kaydır">
+    <svg class="w-3.5 h-3.5 stroke-[#222] fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+  </button></div>
+    <div class="flex justify-end -mt-1.5 sm:-mt-2 mb-2 sm:mb-3">
+      <button type="button" data-scroll-to="#checkout-items" class="text-[12px] sm:text-[13px] font-medium text-primary-700 hover:text-primary-800 hover:underline transition-colors cursor-pointer bg-transparent border-0 p-0">Tümünü Gör</button>
+    </div>
+
+      <!-- Price Breakdown -->
+      <div class="flex flex-col summary-amounts-layout-row">
+        <div class="flex justify-between items-center py-[6px] text-[13px] sm:text-[14px] leading-5 text-text-secondary">
+          <span>Ürün ara toplamı</span>
+          <span>₺31.600,00</span>
+        </div>
+        <div class="flex justify-between items-center py-[6px] text-[13px] sm:text-[14px] leading-5 text-text-secondary">
+          <span>Sevkiyat ücreti</span>
+          <span>₺250,00</span>
+        </div>
+      </div>
+
+      <!-- Coupon Code Section -->
+      <div class="mt-3 mb-1"><div class="demo-coupon"><input class="th-input th-input-md" placeholder="Kupon kodunu girin" id="coupon-code" aria-label="Kupon kodu"><button class="th-btn-outline" id="coupon-apply">Uygula</button></div><p class="demo-field-error" id="coupon-error" role="status" hidden="">Bu örnek sipariş için kullanılabilir kupon bulunmuyor.</p></div>
+
+      <!-- Coupon discount row -->
+      
+
+      <!-- Total -->
+      <div class="flex justify-between items-center mt-[10px] pt-[16px] border-t border-[#e5e5e5] summary-amounts-total-block text-[15px] sm:text-[17px] font-bold text-text-primary">
+        <span>Toplam</span>
+        <span>₺31.850,00</span>
+      </div>
+
+      <!-- Yasal onay: MSY md. 5 gereği açık, serbest, pre-checked olmayan onay. -->
+      <div class="demo-consents" id="consent-section"><label class="demo-check"><input id="business-consent" type="checkbox" value="on"><span>Bu siparişi ticari amaçla verdiğimi ve alıcı işletme adına işlem yapmaya yetkili olduğumu beyan ederim.</span></label><div class="demo-check"><input id="terms-consent" type="checkbox" aria-labelledby="terms-label" value="on"><div id="terms-label"><a href="belgeler/satici-satis-kosullari.html" data-doc="sale">Örnek Elektrik Ltd. Şti.’nin B2B Satış ve Sipariş Koşullarını</a> ve <a id="payment-terms-link" href="belgeler/satici-havale-odeme.html" data-doc="payment">satıcıya havale ile Ödeme Koşullarını</a> kabul ediyorum.</div></div><p id="consent-update" class="consent-update" role="status" hidden="">Ödeme seçiminiz değişti. Güncel ödeme koşullarını yeniden kabul ediniz.</p><button type="button" id="summary-place-order-btn" class="th-btn-success demo-primary" disabled=""><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 4.5 3.2 8.5 8 9 4.8-.5 8-4.5 8-9V6l-8-3Z"></path><path d="m9 12 2 2 4-4"></path></svg><span>Siparişi gözden geçir</span></button></div>
+
+      <!-- Ödeme yapılacak satıcı -->
+      
+    <div class="demo-payee"><p class="demo-eyebrow">ÖDEME YAPILACAK TARAF</p><a class="demo-payee-card" href="belgeler/satici-havale-odeme.html" data-doc="payee" id="payee-card"><span class="payee-symbol">ÖE</span><span><strong id="payee-name">Örnek Elektrik</strong><small id="payee-kind">Satıcıya doğrudan ödeme</small></span><span class="payee-arrow">›</span></a><p class="demo-role">Satış sözleşmesi alıcı ile <a href="belgeler/satici-satis-kosullari.html" data-doc="sale">satıcı</a> arasındadır. <a href="belgeler/istoc-platform-kosullari.html" data-doc="platform">İstoç.com’un rolü ve hizmet koşulları</a></p></div>
+    </div>
+  
+        </div>
+      </div>
+    </div>
+  </main><footer class="demo-footer"><span>© 2026 İstoç.com · Tasarım önizlemesi</span><nav><a href="belgeler/satici-satis-kosullari.html" data-doc="sale">Satıcı satış koşulları</a><a href="belgeler/istoc-platform-kosullari.html" data-doc="platform">Platform kullanım koşulları</a><button class="demo-link-button" data-action="reset">Önizlemeyi sıfırla</button></nav></footer><dialog id="document-dialog" class="document-dialog" aria-labelledby="document-title"><div class="document-top"><div><span class="document-kicker" id="document-kicker">SÖZLEŞME ÖNİZLEMESİ</span><h2 id="document-title"></h2></div><button class="dialog-close" aria-label="Belgeyi kapat" data-close>×</button></div><div class="document-tools"><span id="document-meta">Sipariş TASLAK-2026-025 · Sürüm 1.0</span><div><a id="document-open" target="_blank" rel="noopener">Yeni sekmede aç ↗</a><button id="document-print">Yazdır</button><button id="document-download">HTML indir</button></div></div><div id="document-body" class="document-body"></div><div class="document-bottom"><span>Belgeyi açmak onay vermek anlamına gelmez.</span><button class="th-btn-outline" data-close>Ödemeye dön</button></div></dialog><dialog id="flow-dialog" class="flow-dialog" aria-labelledby="flow-title"><div class="document-top"><h2 id="flow-title"></h2><button class="dialog-close" aria-label="Pencereyi kapat" data-close>×</button></div><div class="flow-body" id="flow-body"></div></dialog><div class="demo-toast" id="toast" role="status" hidden></div><script id="demo-data" type="application/json">{"fixture":{"seller":"Örnek Elektrik Ltd. Şti.","sellerShort":"Örnek Elektrik","buyer":"Örnek Alıcı Ticaret Ltd. Şti.","order":"TASLAK-2026-025","unit":632,"quantity":50,"shipping":250,"total":31850,"subtotal":31600,"image":"assets/urun.jpeg"},"documents":{"sale":{"title":"B2B Satış ve Sipariş Koşulları","file":"satici-satis-kosullari.html","body":"\u003cdiv class=\"document-notice\">\u003cstrong>Örnek belge\u003c/strong> Firma, hesap ve sipariş bilgileri tasarım amacıyla hazırlanmıştır. Bu metin yayıma hazır bir sözleşme değildir.\u003c/div>\u003cdiv class=\"document-facts\">\u003cdiv>\u003cspan>Satıcı\u003c/span>\u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Alıcı\u003c/span>\u003cstrong>Örnek Alıcı Ticaret Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Sipariş\u003c/span>\u003cstrong>TASLAK-2026-025\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Toplam\u003c/span>\u003cstrong>₺31.850,00\u003c/strong>\u003c/div>\u003c/div>\n \u003ch3>1. Taraflar ve ticari amaç\u003c/h3>\u003cp>Bu satışın tarafları, siparişte belirtilen \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> (satıcı) ile \u003cstrong>Örnek Alıcı Ticaret Ltd. Şti.\u003c/strong> (alıcı) işletmeleridir. Alıcı, siparişi ticari veya mesleki amaçla verdiğini ve işletme adına işlem yapmaya yetkili olduğunu beyan eder.\u003c/p>\n \u003ch3>2. Siparişe özel koşullar\u003c/h3>\u003cdiv class=\"document-table-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>Ürün / özellik\u003c/th>\u003cth>Miktar\u003c/th>\u003cth>Birim fiyat\u003c/th>\u003cth>Bedel\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>4’lü topraklı grup priz\u003cbr>\u003csmall>Anahtarlı · Beyaz · 2 metre\u003c/small>\u003c/td>\u003ctd>50 adet\u003c/td>\u003ctd>₺632,00\u003c/td>\u003ctd>₺31.600,00\u003c/td>\u003c/tr>\u003ctr>\u003ctd colspan=\"3\">Sevkiyat bedeli\u003c/td>\u003ctd>₺250,00\u003c/td>\u003c/tr>\u003ctr>\u003cth colspan=\"3\">Toplam · KDV dahil örnek bedel\u003c/th>\u003cth>₺31.850,00\u003c/th>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\n \u003cul>\u003cli>\u003cstrong>Sevkiyat:\u003c/strong> Ödeme teyidinden itibaren 3–5 iş günü içinde sevk. Bu süre kargonun varış tarihi değildir.\u003c/li>\u003cli>\u003cstrong>Teslim yeri:\u003c/strong> Siparişte seçilen işletme teslimat adresi, İstanbul / Türkiye.\u003c/li>\u003cli>\u003cstrong>Ambalaj:\u003c/strong> Standart ürün ambalajı; özel logo veya üretim talebi yoktur.\u003c/li>\u003cli>\u003cstrong>Ödeme:\u003c/strong> Peşin. Alıcının seçtiği yöntem ve tahsilat alıcısı, ayrı Ödeme Koşullarında gösterilir.\u003c/li>\u003cli>\u003cstrong>Özel koşul:\u003c/strong> Kısmi sevkiyat yapılması için alıcının ayrıca kabulü alınır.\u003c/li>\u003c/ul>\n \u003ch3>3. Satıcının genel satış koşulları\u003c/h3>\u003cp>Satıcı, ürünleri siparişte kabul edilen tanım, miktar ve özelliklere uygun olarak tedarik eder. Ürün, fiyat, miktar veya teslimat koşullarında değişiklik gerekiyorsa alıcıya yeni teklif sunulur; alıcının kabulü olmadan farklı koşullarla devam edilmez.\u003c/p>\n \u003ch3>4. Siparişin kesinleşmesi\u003c/h3>\u003cp>Bu tasarım örneğinde satıcının önceden sunduğu ürün, fiyat ve koşullar alıcıya teklif olarak gösterilir. Alıcının son inceleme ekranında \u003cstrong>“Siparişi onayla”\u003c/strong> eylemiyle aynı koşulları kabul etmesiyle satış sözleşmesinin kurulduğu model örneklenmiştir. Canlı uygulamadaki stok, satıcı kabulü ve ödeme sırası bu maddeyle uyumlu hale getirilmelidir.\u003c/p>\n \u003ch3>5. Teslimat, muayene ve uygunsuzluk\u003c/h3>\u003cp>Alıcı teslim aldığı ürünleri miktar, model ve görünür hasar bakımından kontrol eder. Eksik, yanlış veya hasarlı ürünü sipariş üzerinden satıcıya bildirir; varsa fotoğraf ve teslimat kaydını ekler. Gizli ayıp sonradan fark edildiğinde ayrıca bildirilir. Çözüm, sorunun niteliğine ve uygulanabilir hukuka göre tamamlama, onarım, değişim, bedel indirimi veya iade olabilir.\u003c/p>\n \u003ch3>6. Ticari iptal ve iade\u003c/h3>\u003cp>Bu örnek ticari politikada, sevkiyat başlamadan önce alıcının iptal talebi kabul edilir. Sevkiyat sonrasında yalnız fikir değişikliği nedeniyle iade, satıcının ayrıca kabulüne bağlıdır. Bu hüküm eksik teslim, ayıplı veya sözleşmeye aykırı ürüne ilişkin talepleri ortadan kaldırmaz. Gerçek satıcının seçtiği politika ve masrafları alıcı onayından önce bu bölümde somut olarak gösterilir.\u003c/p>\n \u003ch3>7. Belgelerin önceliği\u003c/h3>\u003cp>Tarafların karşılıklı kabul ettiği siparişe özel koşullar, değiştirdikleri genel satış hükümlerine göre önceliklidir. Satıcı genel koşullarını sonradan güncellediğinde tamamlanmış siparişin kabul edilen sürümü değişmez. Satıcı koşulları İstoç adına ek garanti veya ödeme taahhüdü oluşturamaz.\u003c/p>\n \u003ch3>8. İstoç’un rolü\u003c/h3>\u003cp>İstoç.com bu ürün satışının tarafı değildir; platform hizmeti sunar. İstoç üzerinden tahsilat seçildiğinde ayrıca ilgili Ödeme Koşulları uygulanır. İstoç’un kendi hizmetlerinden doğan yükümlülükleri saklıdır.\u003c/p>\n \u003ch3>9. Hukuk ve uyuşmazlık düzeni\u003c/h3>\u003cp>\u003cstrong>Taslakta tamamlanacak:\u003c/strong> Bu alıcı–satıcı satışına uygulanacak hukuk ve yetkili mahkeme veya tahkim düzeni. Platform işletmecisinin İngiltere’de bulunması, bu satış için tek başına hukuk seçimi oluşturmaz.\u003c/p>\u003cp>Bu koşullar, uygulanabilir mevzuat uyarınca sınırlandırılamayan hakları veya ilgili hizmet sağlayıcısının kendi hizmetlerinden doğan yükümlülüklerini ortadan kaldırmaz.\u003c/p>"},"seller_bank":{"title":"Satıcıya doğrudan havale ile ödeme koşulları","file":"satici-havale-odeme.html","owner":"seller","method":"bank","body":"\u003cdiv class=\"document-notice\">\u003cstrong>Örnek belge\u003c/strong> Firma, hesap ve sipariş bilgileri tasarım amacıyla hazırlanmıştır. Bu metin yayıma hazır bir sözleşme değildir.\u003c/div>\u003cdiv class=\"document-facts\">\u003cdiv>\u003cspan>Satıcı\u003c/span>\u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Alıcı\u003c/span>\u003cstrong>Örnek Alıcı Ticaret Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Sipariş\u003c/span>\u003cstrong>TASLAK-2026-025\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Toplam\u003c/span>\u003cstrong>₺31.850,00\u003c/strong>\u003c/div>\u003c/div>\u003cdiv class=\"document-highlight\">\u003cspan>Bu siparişte ödeme\u003c/span>\u003cstrong>Banka havalesi / EFT\u003c/strong>\u003cp>Tahsilatı alan: \u003cb>Örnek Elektrik Ltd. Şti.\u003c/b>\u003c/p>\u003c/div>\n \u003ch3>1. Satış ve tahsilatın tarafları\u003c/h3>\u003cp>Ürünün satıcısı \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> olarak kalır. Ödeme doğrudan satıcı adına alınır. İstoç.com siparişin oluşturulması ve görüntülenmesi için platform hizmeti sunar.\u003c/p>\n \u003ch3>2. Tutar ve ödeme yöntemi\u003c/h3>\u003cp>Bu siparişte ödenecek tutar \u003cstrong>₺31.850,00\u003c/strong> olup örnek fiyatlar KDV dahildir. Platform tarafından bu örnek işlem için ek ödeme işlem ücreti alınmaz. Alıcının bankası veya kart kuruluşunun ayrıca uyguladığı kur/transfer ücretleri kendi tarifesine tabidir.\u003c/p>\n \u003ch3>3. Havale talimatı\u003c/h3>\u003cp>Alıcı, sipariş için gösterilen ve \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> adına kayıtlı banka hesabına ödeme yapar. Açıklamaya \u003cstrong>TASLAK-2026-025\u003c/strong> sipariş numarası yazılır. Ödemenin belirtilen hesaba ulaştığı ve siparişle eşleştiği doğrulandığında ödeme durumu güncellenir. Dekont yüklenmesi tek başına tahsilatın gerçekleştiği anlamına gelmez.\u003c/p>\u003cp>Bu önizlemede gerçek IBAN veya banka hesabı bulunmaz. Canlı siparişte hesap sahibi, banka, IBAN/hesap numarası ve gerektiğinde SWIFT bilgileri açıkça gösterilir.\u003c/p>\n \u003ch3>4. Ödemenin siparişe işlenmesi\u003c/h3>\u003cp>Doğrulanan ödeme ilgili siparişe işlenir. Eksik veya eşleştirilemeyen ödemelerde alıcıya bilgi verilir.\u003c/p>\n \u003ch3>5. İptal, iade ve itirazlar\u003c/h3>\u003cp>Ürüne ilişkin talepler siparişe eklenen B2B Satış ve Sipariş Koşullarına göre değerlendirilir. İade hakkı veya kararı doğduğunda iade alıcısı ve hesap bilgileri doğrulanarak banka transferi yapılır. İadeyi gerçekleştirecek taraf, ödeme kaydı ve ilgili iade kararıyla birlikte açıkça belirtilir.\u003c/p>\n \u003ch3>6. İstoç’un hizmet kapsamı\u003c/h3>\u003cp>İstoç’un rolü platform hizmeti sunmaktır. Ürünün satışı ve teslim yükümlülüğü satıcıya aittir. Ödeme işleminin gerçekleştirilmesi, tek başına İstoç tarafından ayrıca bir teslimat veya koşulsuz para iadesi taahhüdü verildiği anlamına gelmez.\u003c/p>\u003cp>Bu koşullar, uygulanabilir mevzuat uyarınca sınırlandırılamayan hakları veya ilgili hizmet sağlayıcısının kendi hizmetlerinden doğan yükümlülüklerini ortadan kaldırmaz.\u003c/p>\n \u003ch3>7. Kayıt ve erişim\u003c/h3>\u003cp>Alıcının kabul ettiği ödeme yöntemi, ödeme alıcısı, tutar ve bu belgenin sürümü siparişe bağlı olarak kaydedilir. Değişiklik olursa yeni koşullar kabulden önce gösterilir. Bu örnekte hiçbir veri bir ödeme kuruluşuna gönderilmez.\u003c/p>"},"seller_card":{"title":"Satıcıya doğrudan kartla ödeme koşulları","file":"satici-kart-odeme.html","owner":"seller","method":"card","body":"\u003cdiv class=\"document-notice\">\u003cstrong>Örnek belge\u003c/strong> Firma, hesap ve sipariş bilgileri tasarım amacıyla hazırlanmıştır. Bu metin yayıma hazır bir sözleşme değildir.\u003c/div>\u003cdiv class=\"document-facts\">\u003cdiv>\u003cspan>Satıcı\u003c/span>\u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Alıcı\u003c/span>\u003cstrong>Örnek Alıcı Ticaret Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Sipariş\u003c/span>\u003cstrong>TASLAK-2026-025\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Toplam\u003c/span>\u003cstrong>₺31.850,00\u003c/strong>\u003c/div>\u003c/div>\u003cdiv class=\"document-highlight\">\u003cspan>Bu siparişte ödeme\u003c/span>\u003cstrong>Kredi / banka kartı · Tek çekim\u003c/strong>\u003cp>Tahsilatı alan: \u003cb>Örnek Elektrik Ltd. Şti.\u003c/b> · İşlemi yapan: \u003cb>Örnek Ödeme Kuruluşu\u003c/b>\u003c/p>\u003c/div>\n \u003ch3>1. Satış ve tahsilatın tarafları\u003c/h3>\u003cp>Ürünün satıcısı \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> olarak kalır. Ödeme doğrudan satıcı adına alınır. İstoç.com siparişin oluşturulması ve görüntülenmesi için platform hizmeti sunar.\u003c/p>\n \u003ch3>2. Tutar ve ödeme yöntemi\u003c/h3>\u003cp>Bu siparişte ödenecek tutar \u003cstrong>₺31.850,00\u003c/strong> olup örnek fiyatlar KDV dahildir. Platform tarafından bu örnek işlem için ek ödeme işlem ücreti alınmaz. Alıcının bankası veya kart kuruluşunun ayrıca uyguladığı kur/transfer ücretleri kendi tarifesine tabidir.\u003c/p>\n \u003ch3>3. Kartla ödeme talimatı\u003c/h3>\u003cp>Alıcı, ödeme ekranında gösterilen tutarın kartından tek çekim tahsil edilmesi için talimat verir. İşlem, \u003cstrong>Örnek Ödeme Kuruluşu\u003c/strong> tarafından \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> adına gerçekleştirilir. Banka gerekli görürse ek kimlik doğrulaması istenebilir. İşlem başarısız olursa ödeme tamamlanmış sayılmaz.\u003c/p>\u003cp>Kart ekstresinde görünecek işyeri açıklaması: \u003cstrong>ORNEK ELEKTRIK DEMO\u003c/strong>. Bu açıklama da gerçek ödeme sağlayıcısına göre kesinleştirilir.\u003c/p>\n \u003ch3>4. Ödemenin siparişe işlenmesi\u003c/h3>\u003cp>Doğrulanan ödeme ilgili siparişe işlenir. Eksik veya eşleştirilemeyen ödemelerde alıcıya bilgi verilir.\u003c/p>\n \u003ch3>5. İptal, iade ve itirazlar\u003c/h3>\u003cp>Ürüne ilişkin talepler siparişe eklenen B2B Satış ve Sipariş Koşullarına göre değerlendirilir. İade hakkı veya kararı doğduğunda iade işlemi, ödeme sağlayıcısının kuralları ve uygulanabilir mevzuat çerçevesinde kural olarak ödemenin yapıldığı karta başlatılır. Bankaya yansıma süresi bankaya bağlıdır. Alıcının banka/ödeme sağlayıcısı nezdinde sahip olduğu işlem itirazı hakları saklıdır.\u003c/p>\n \u003ch3>6. İstoç’un hizmet kapsamı\u003c/h3>\u003cp>İstoç’un rolü platform hizmeti sunmaktır. Ürünün satışı ve teslim yükümlülüğü satıcıya aittir. Ödeme işleminin gerçekleştirilmesi, tek başına İstoç tarafından ayrıca bir teslimat veya koşulsuz para iadesi taahhüdü verildiği anlamına gelmez.\u003c/p>\u003cp>Bu koşullar, uygulanabilir mevzuat uyarınca sınırlandırılamayan hakları veya ilgili hizmet sağlayıcısının kendi hizmetlerinden doğan yükümlülüklerini ortadan kaldırmaz.\u003c/p>\n \u003ch3>7. Kayıt ve erişim\u003c/h3>\u003cp>Alıcının kabul ettiği ödeme yöntemi, ödeme alıcısı, tutar ve bu belgenin sürümü siparişe bağlı olarak kaydedilir. Değişiklik olursa yeni koşullar kabulden önce gösterilir. Bu örnekte hiçbir veri bir ödeme kuruluşuna gönderilmez.\u003c/p>"},"istoc_bank":{"title":"İstoç.com üzerinden havale ile ödeme koşulları","file":"istoc-havale-odeme.html","owner":"istoc","method":"bank","body":"\u003cdiv class=\"document-notice\">\u003cstrong>Örnek belge\u003c/strong> Firma, hesap ve sipariş bilgileri tasarım amacıyla hazırlanmıştır. Bu metin yayıma hazır bir sözleşme değildir.\u003c/div>\u003cdiv class=\"document-facts\">\u003cdiv>\u003cspan>Satıcı\u003c/span>\u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Alıcı\u003c/span>\u003cstrong>Örnek Alıcı Ticaret Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Sipariş\u003c/span>\u003cstrong>TASLAK-2026-025\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Toplam\u003c/span>\u003cstrong>₺31.850,00\u003c/strong>\u003c/div>\u003c/div>\u003cdiv class=\"document-highlight\">\u003cspan>Bu siparişte ödeme\u003c/span>\u003cstrong>Banka havalesi / EFT\u003c/strong>\u003cp>Tahsilatı alan: \u003cb>İstoç.com işletmecisi\u003c/b>\u003c/p>\u003c/div>\n \u003ch3>1. Satış ve tahsilatın tarafları\u003c/h3>\u003cp>Ürünün satıcısı \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> olarak kalır. Bu örnek modelde İstoç işletmecisi, satıcının verdiği tahsilat yetkisi kapsamında satış bedelini satıcı adına alır. Bu yetki ve gerçek ödeme hizmeti modeli canlı kullanımdan önce ilgili sözleşmelerde doğrulanmalıdır.\u003c/p>\n \u003ch3>2. Tutar ve ödeme yöntemi\u003c/h3>\u003cp>Bu siparişte ödenecek tutar \u003cstrong>₺31.850,00\u003c/strong> olup örnek fiyatlar KDV dahildir. Platform tarafından bu örnek işlem için ek ödeme işlem ücreti alınmaz. Alıcının bankası veya kart kuruluşunun ayrıca uyguladığı kur/transfer ücretleri kendi tarifesine tabidir.\u003c/p>\n \u003ch3>3. Havale talimatı\u003c/h3>\u003cp>Alıcı, sipariş için gösterilen ve \u003cstrong>İstoç.com işletmecisi\u003c/strong> adına kayıtlı banka hesabına ödeme yapar. Açıklamaya \u003cstrong>TASLAK-2026-025\u003c/strong> sipariş numarası yazılır. Ödemenin belirtilen hesaba ulaştığı ve siparişle eşleştiği doğrulandığında ödeme durumu güncellenir. Dekont yüklenmesi tek başına tahsilatın gerçekleştiği anlamına gelmez.\u003c/p>\u003cp>Bu önizlemede gerçek IBAN veya banka hesabı bulunmaz. Canlı siparişte hesap sahibi, banka, IBAN/hesap numarası ve gerektiğinde SWIFT bilgileri açıkça gösterilir.\u003c/p>\n \u003ch3>4. Ödemenin siparişe işlenmesi\u003c/h3>\u003cp>Bu taslakta, satıcının yetkilendirdiği tahsilat alıcısına yapılan ve doğrulanan ödeme, ödendiği tutar kadar satıcıya karşı ödeme borcunun ifası olarak kabul edilir. Satıcıya aktarım süreci alıcıdan aynı bedelin ikinci kez istenmesine gerekçe oluşturmaz. Bu hüküm gerçek tahsilat yetkisiyle birlikte değerlendirilmelidir.\u003c/p>\n \u003ch3>5. İptal, iade ve itirazlar\u003c/h3>\u003cp>Ürüne ilişkin talepler siparişe eklenen B2B Satış ve Sipariş Koşullarına göre değerlendirilir. İade hakkı veya kararı doğduğunda iade alıcısı ve hesap bilgileri doğrulanarak banka transferi yapılır. İadeyi gerçekleştirecek taraf, ödeme kaydı ve ilgili iade kararıyla birlikte açıkça belirtilir.\u003c/p>\n \u003ch3>6. İstoç’un hizmet kapsamı\u003c/h3>\u003cp>İstoç’un rolü platform hizmeti ve burada açıklanan tahsilat sürecidir. Ürünün satışı ve teslim yükümlülüğü satıcıya aittir. Ödeme işleminin gerçekleştirilmesi, tek başına İstoç tarafından ayrıca bir teslimat veya koşulsuz para iadesi taahhüdü verildiği anlamına gelmez.\u003c/p>\u003cp>Bu koşullar, uygulanabilir mevzuat uyarınca sınırlandırılamayan hakları veya ilgili hizmet sağlayıcısının kendi hizmetlerinden doğan yükümlülüklerini ortadan kaldırmaz.\u003c/p>\n \u003ch3>7. Kayıt ve erişim\u003c/h3>\u003cp>Alıcının kabul ettiği ödeme yöntemi, ödeme alıcısı, tutar ve bu belgenin sürümü siparişe bağlı olarak kaydedilir. Değişiklik olursa yeni koşullar kabulden önce gösterilir. Bu örnekte hiçbir veri bir ödeme kuruluşuna gönderilmez.\u003c/p>"},"istoc_card":{"title":"İstoç.com üzerinden kartla ödeme koşulları","file":"istoc-kart-odeme.html","owner":"istoc","method":"card","body":"\u003cdiv class=\"document-notice\">\u003cstrong>Örnek belge\u003c/strong> Firma, hesap ve sipariş bilgileri tasarım amacıyla hazırlanmıştır. Bu metin yayıma hazır bir sözleşme değildir.\u003c/div>\u003cdiv class=\"document-facts\">\u003cdiv>\u003cspan>Satıcı\u003c/span>\u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Alıcı\u003c/span>\u003cstrong>Örnek Alıcı Ticaret Ltd. Şti.\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Sipariş\u003c/span>\u003cstrong>TASLAK-2026-025\u003c/strong>\u003c/div>\u003cdiv>\u003cspan>Toplam\u003c/span>\u003cstrong>₺31.850,00\u003c/strong>\u003c/div>\u003c/div>\u003cdiv class=\"document-highlight\">\u003cspan>Bu siparişte ödeme\u003c/span>\u003cstrong>Kredi / banka kartı · Tek çekim\u003c/strong>\u003cp>Tahsilatı alan: \u003cb>İstoç.com işletmecisi\u003c/b> · İşlemi yapan: \u003cb>Örnek Ödeme Kuruluşu\u003c/b>\u003c/p>\u003c/div>\n \u003ch3>1. Satış ve tahsilatın tarafları\u003c/h3>\u003cp>Ürünün satıcısı \u003cstrong>Örnek Elektrik Ltd. Şti.\u003c/strong> olarak kalır. Bu örnek modelde İstoç işletmecisi, satıcının verdiği tahsilat yetkisi kapsamında satış bedelini satıcı adına alır. Bu yetki ve gerçek ödeme hizmeti modeli canlı kullanımdan önce ilgili sözleşmelerde doğrulanmalıdır.\u003c/p>\n \u003ch3>2. Tutar ve ödeme yöntemi\u003c/h3>\u003cp>Bu siparişte ödenecek tutar \u003cstrong>₺31.850,00\u003c/strong> olup örnek fiyatlar KDV dahildir. Platform tarafından bu örnek işlem için ek ödeme işlem ücreti alınmaz. Alıcının bankası veya kart kuruluşunun ayrıca uyguladığı kur/transfer ücretleri kendi tarifesine tabidir.\u003c/p>\n \u003ch3>3. Kartla ödeme talimatı\u003c/h3>\u003cp>Alıcı, ödeme ekranında gösterilen tutarın kartından tek çekim tahsil edilmesi için talimat verir. İşlem, \u003cstrong>Örnek Ödeme Kuruluşu\u003c/strong> tarafından \u003cstrong>İstoç.com işletmecisi\u003c/strong> adına gerçekleştirilir. Banka gerekli görürse ek kimlik doğrulaması istenebilir. İşlem başarısız olursa ödeme tamamlanmış sayılmaz.\u003c/p>\u003cp>Kart ekstresinde görünecek işyeri açıklaması: \u003cstrong>ISTOC DEMO\u003c/strong>. Bu açıklama da gerçek ödeme sağlayıcısına göre kesinleştirilir.\u003c/p>\n \u003ch3>4. Ödemenin siparişe işlenmesi\u003c/h3>\u003cp>Bu taslakta, satıcının yetkilendirdiği tahsilat alıcısına yapılan ve doğrulanan ödeme, ödendiği tutar kadar satıcıya karşı ödeme borcunun ifası olarak kabul edilir. Satıcıya aktarım süreci alıcıdan aynı bedelin ikinci kez istenmesine gerekçe oluşturmaz. Bu hüküm gerçek tahsilat yetkisiyle birlikte değerlendirilmelidir.\u003c/p>\n \u003ch3>5. İptal, iade ve itirazlar\u003c/h3>\u003cp>Ürüne ilişkin talepler siparişe eklenen B2B Satış ve Sipariş Koşullarına göre değerlendirilir. İade hakkı veya kararı doğduğunda iade işlemi, ödeme sağlayıcısının kuralları ve uygulanabilir mevzuat çerçevesinde kural olarak ödemenin yapıldığı karta başlatılır. Bankaya yansıma süresi bankaya bağlıdır. Alıcının banka/ödeme sağlayıcısı nezdinde sahip olduğu işlem itirazı hakları saklıdır.\u003c/p>\n \u003ch3>6. İstoç’un hizmet kapsamı\u003c/h3>\u003cp>İstoç’un rolü platform hizmeti ve burada açıklanan tahsilat sürecidir. Ürünün satışı ve teslim yükümlülüğü satıcıya aittir. Ödeme işleminin gerçekleştirilmesi, tek başına İstoç tarafından ayrıca bir teslimat veya koşulsuz para iadesi taahhüdü verildiği anlamına gelmez.\u003c/p>\u003cp>Bu koşullar, uygulanabilir mevzuat uyarınca sınırlandırılamayan hakları veya ilgili hizmet sağlayıcısının kendi hizmetlerinden doğan yükümlülüklerini ortadan kaldırmaz.\u003c/p>\n \u003ch3>7. Kayıt ve erişim\u003c/h3>\u003cp>Alıcının kabul ettiği ödeme yöntemi, ödeme alıcısı, tutar ve bu belgenin sürümü siparişe bağlı olarak kaydedilir. Değişiklik olursa yeni koşullar kabulden önce gösterilir. Bu örnekte hiçbir veri bir ödeme kuruluşuna gönderilmez.\u003c/p>"},"platform":{"title":"İstoç.com Platform Kullanım Koşulları","file":"istoc-platform-kosullari.html","body":"\u003cdiv class=\"document-notice\">\u003cstrong>Örnek belge\u003c/strong> Firma, hesap ve sipariş bilgileri tasarım amacıyla hazırlanmıştır. Bu metin yayıma hazır bir sözleşme değildir.\u003c/div>\u003cdiv class=\"document-highlight\">\u003cspan>Bu belgenin tarafları\u003c/span>\u003cstrong>İstoç.com işletmecisi ↔ platform kullanıcısı\u003c/strong>\u003cp>Ürün satış koşullarından ayrı platform hizmet ilişkisi.\u003c/p>\u003c/div>\u003ch3>1. Platform işletmecisi\u003c/h3>\u003cp>İstoç.com markasını işleten İngiltere merkezli şirketin tam sicil unvanı, Companies House kayıt numarası ve kayıtlı adresi gerçek belgede yer alacaktır. Bu önizlemede şirket sicil bilgileri kullanılmamıştır.\u003c/p>\u003ch3>2. Sunulan hizmet\u003c/h3>\u003cp>İstoç.com, işletmelerin ürünleri incelemesine, satıcılarla iletişim kurmasına, sipariş oluşturmasına ve sipariş bilgilerini takip etmesine imkân sağlayan B2B pazaryeridir. Platform, kullanıcıya sunduğu kendi hizmetlerinden sorumludur.\u003c/p>\u003ch3>3. Ürün satışının tarafları\u003c/h3>\u003cp>Ürün satış sözleşmesi, siparişte açıkça belirtilen alıcı işletme ile satıcı işletme arasında kurulur. Satıcının kimliği, ürün özellikleri ve satış koşulları siparişin onayından önce gösterilir.\u003c/p>\u003ch3>4. Ödeme yöntemleri ve tahsilat alıcısı\u003c/h3>\u003cp>Ödeme sayfasında doğrudan satıcıya veya İstoç üzerinden ödeme senaryosu gösterilir. Her işlemde ödeme yöntemi, tahsilatı alan kuruluş ve varsa ödeme sağlayıcısı açıkça belirtilir. İstoç üzerinden tahsilat modelinde gerçek yetki, sağlayıcı sözleşmeleri ve gerekli hukuki değerlendirme tamamlanmalıdır. Bir ödeme yöntemi sunulması, İstoç’u kendiliğinden ürün satıcısı yapmaz.\u003c/p>\u003ch3>5. Hesap ve işletme bilgileri\u003c/h3>\u003cp>Kullanıcı işletme ve temsil bilgilerini doğru ve güncel tutar. Hesabını yetkisiz kullanıma karşı korur. İşlemlerin ticari niteliği ve temsil yetkisi gerektiğinde doğrulanır.\u003c/p>\u003ch3>6. Destek ve sorumluluk\u003c/h3>\u003cp>Ürünle ilgili talepler ilgili satıcıya; platformun işleyişi ve kendi hizmetleriyle ilgili talepler İstoç’a yöneltilir. Tahsilatla ilgili talepler ödeme kaydında belirtilen tarafa ve gerektiğinde ödeme sağlayıcısına iletilir. İstoç’un destek sunması, satıcı adına sınırsız ürün garantisi verdiği anlamına gelmez.\u003c/p>\u003cp>Bu koşullar, uygulanabilir mevzuat uyarınca sınırlandırılamayan hakları veya ilgili hizmet sağlayıcısının kendi hizmetlerinden doğan yükümlülüklerini ortadan kaldırmaz.\u003c/p>\u003ch3>7. Kabul ve sürüm\u003c/h3>\u003cp>Platform koşulları üyelik sırasında ve yeniden kabul gerektiren değişikliklerde onaya sunulur. Sipariş sırasında ayrıca satıcının o siparişe ait koşulları ile seçilen ödeme yönteminin koşulları gösterilir. Sonradan yapılan güncelleme geçmiş siparişe ait kabul edilmiş belgeyi değiştirmez.\u003c/p>\u003ch3>8. Hukuk incelemesinde tamamlanacak alanlar\u003c/h3>\u003cp>Gerçek işletmeci sicil bilgileri, sunulan ödeme hizmetinin kapsamı ve varsa ücretleri, veri koruma bildirimleri, platform sözleşmesine uygulanacak hukuk ve yetkili uyuşmazlık mercii nihai metinde tamamlanmalıdır. İngiltere ve Galler hukuku platform sözleşmesi için değerlendirme seçeneğidir; bu örnek belge otomatik bir hukuk seçimi yapmaz.\u003c/p>"}}}</script><script src="app.js"></script></body></html>
