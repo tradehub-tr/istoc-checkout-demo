@@ -6,7 +6,7 @@
   const money = (value) => new Intl.NumberFormat('tr-TR', {style:'currency', currency:'TRY'}).format(value);
   const escape = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const query = new URLSearchParams(location.search);
-  const state = {owner:query.get('alici') === 'istoc' ? 'istoc':'seller', method:query.get('yontem') === 'kart' ? 'card':'bank', step:[1,2,3].includes(Number(query.get('adim')))?Number(query.get('adim')):1, note:'', doc:null};
+  const state = {owner:query.get('alici') === 'istoc' ? 'istoc':'seller', method:query.get('yontem') === 'kart' ? 'card':'bank', note:'', doc:null};
   const payKey = () => `${state.owner}_${state.method}`;
   const recipient = () => state.owner === 'istoc' ? 'İstoç.com işletmecisi' : fixture.seller;
   let toastTimer;
@@ -25,12 +25,6 @@
     const platform=state.owner==='istoc', card=state.method==='card';
     const copy=documents[payKey()].checkout;
     $$('[data-scenario]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scenario===state.owner)));
-    $$('input[name="recipient"]').forEach(r=>{r.checked=r.value===state.owner;r.closest('.demo-recipient').classList.toggle('is-selected',r.checked);});
-    $$('[data-payment-step]').forEach(b=>{const active=Number(b.dataset.paymentStep)===state.step;if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');b.classList.toggle('is-complete',Number(b.dataset.paymentStep)<state.step);});
-    $$('[data-step-panel]').forEach(panel=>panel.hidden=Number(panel.dataset.stepPanel)!==state.step);
-    $('#payment-prev').hidden=state.step===1;
-    $('#payment-next').textContent=['Ödeme yöntemine geç','Koşulları gör','Sipariş onayına geç'][state.step-1];
-    $('#payment-step-count').textContent=`Adım ${state.step} / 3`;
     $$('input[name="method"]').forEach(r=>{r.checked=r.value===state.method;r.closest('.demo-method').classList.toggle('is-selected',r.checked);});
     $('#method-payee-label').textContent=(platform?'İSTOÇ.COM':'ÖRNEK ELEKTRİK')+' İÇİN ÖDEME YÖNTEMİ';
     $('#payee-name').textContent=platform?'İstoç.com':fixture.sellerShort;
@@ -39,18 +33,6 @@
     $('#payee-card').href='belgeler/'+documents[payKey()].file;
     $('#payment-terms-link').textContent=copy.consentLabel;
     $('#payment-terms-link').href='belgeler/'+documents[payKey()].file;
-    $('#recipient-summary').textContent=platform
-      ? 'Ürünün satıcısı Örnek Elektrik Ltd. Şti. olarak kalır. İstoç.com, bu örnek modelde satıcı adına ödeme alır.'
-      : 'Ürünün satıcısı ve ödeme alıcısı Örnek Elektrik Ltd. Şti.’dir. İstoç.com platform hizmeti sunar.';
-    $('#scenario-title').textContent=copy.title;
-    $('#scenario-payment').textContent=copy.payment;
-    $('#scenario-role').textContent=copy.role;
-    $('#scenario-recipient').textContent=recipient();
-    $('#scenario-recipient').href='belgeler/'+documents[payKey()].file;
-    $('#scenario-method').textContent=copy.methodLabel;
-    $('#scenario-payment-doc').textContent=documents[payKey()].title;
-    $('#scenario-payment-doc').href='belgeler/'+documents[payKey()].file;
-    $('#scenario-consent').innerHTML=`<a href="belgeler/${documents.sale.file}" data-doc="sale">${escape(fixture.seller)}’nin B2B Satış ve Sipariş Koşullarını</a> ve <a href="belgeler/${documents[payKey()].file}" data-doc="payment">${escape(copy.consentLabel)}</a> kabul ediyorum.`;
     $('#payee-explanation').textContent=platform?'İstoç.com, bu örnek modelde satıcı adına tahsilat yapar. Ürünün satıcısı Örnek Elektrik’tir.':'Ödeme doğrudan Örnek Elektrik’e yapılır. İstoç.com platform hizmeti sunar.';
     $('#payment-detail').innerHTML=card
       ? `<div class="payment-tags"><span>VISA</span><span>Mastercard</span><b>Tek çekim</b></div><p>Kartınızdan <strong>${money(fixture.total)}</strong> tahsil edilir. Ödeme <strong>Örnek Ödeme Kuruluşu</strong> aracılığıyla <strong>${recipient()}</strong> adına işlenir.</p><p class="payment-small">Kart işlemi bu önizlemede yalnızca örneklenir; kart bilgisi alınmaz.</p>`
@@ -58,7 +40,7 @@
     const url=new URL(location.href);
     url.searchParams.set('alici',state.owner);
     url.searchParams.set('yontem',card?'kart':'havale');
-    url.searchParams.set('adim',String(state.step));
+    url.searchParams.delete('adim');
     history.replaceState(null,'',url);
     syncConsent();
   }
@@ -94,14 +76,7 @@
   document.addEventListener('click',(event)=>{
     const target=event.target.closest('button,a');
     if(!target)return;
-    if(target.dataset.scenario) { if(state.owner!==target.dataset.scenario){state.owner=target.dataset.scenario;invalidate();}state.step=1;render();return; }
-    if(target.dataset.paymentStep){state.step=Number(target.dataset.paymentStep);render();return;}
-    if(target.id==='payment-prev'){state.step=Math.max(1,state.step-1);render();return;}
-    if(target.id==='payment-next'){
-      if(state.step<3){state.step++;render();}
-      else {const consent=$('#consent-section');consent.scrollIntoView({behavior:'smooth',block:'center'});$('#business-consent').focus({preventScroll:true});}
-      return;
-    }
+    if(target.dataset.scenario) { if(state.owner!==target.dataset.scenario){state.owner=target.dataset.scenario;invalidate();render();}return; }
     if(target.dataset.doc) { event.preventDefault();openDocument(target.dataset.doc);return; }
     if(target.hasAttribute('data-close')) {target.closest('dialog')?.close();return;}
     if(target.dataset.collapse) {const panel=document.getElementById(target.dataset.collapse);panel.hidden=!panel.hidden;target.setAttribute('aria-expanded',String(!panel.hidden));if(!target.classList.contains('co-product-head'))target.textContent=panel.hidden?'Düzenle':'Kapat';return;}
@@ -126,7 +101,6 @@
     if(target.closest('#checkout-items') && target.getAttribute('aria-expanded')){const content=target.nextElementSibling;if(content){content.hidden=!content.hidden;target.setAttribute('aria-expanded',String(!content.hidden));}}
   });
   document.addEventListener('change',(event)=>{
-    if(event.target.matches('input[name="recipient"]')){state.owner=event.target.value;invalidate();render();}
     if(event.target.matches('input[name="method"]')){state.method=event.target.value;invalidate();render();}
     if(event.target.matches('#business-consent,#terms-consent'))syncConsent();
     if(event.target.matches('[data-demo-field]'))invalidate('Fatura bilgileriniz değişti. Sipariş koşullarını yeniden kabul ediniz.');

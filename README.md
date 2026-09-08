@@ -4,13 +4,11 @@
 
 Statik HTML tasarım örneğidir. Gerçek sipariş, ödeme veya kullanıcı hesabı işlemi yapmaz. Metinler inceleme için taslaktır.
 
-Ödeme alanındaki üç adım:
+Ödeme alanında havale/kart seçilir. Satıcının satış koşulları ve seçilen yöntemin ödeme koşulları, sipariş özetindeki onay metninden açılır. Ayrı bir sözleşme adımı veya adım seçicisi yoktur.
 
-1. Doğrudan satıcıya veya İstoç üzerinden ödeme seçilir.
-2. Havale / EFT veya kredi / banka kartı seçilir.
-3. Seçime ait ödeme açıklaması, satıcının kimliği, tahsilat alıcısı, açılabilir belgeler ve onay kutusu metni gösterilir.
+Üstteki satıcı/İstoç düğmeleri demo senaryosunu değiştirir.
 
-[Satıcıya ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=seller&yontem=havale&adim=3) · [İstoç üzerinden ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=istoc&yontem=havale&adim=3)
+[Satıcıya ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=seller&yontem=havale#consent-section) · [İstoç üzerinden ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=istoc&yontem=havale#consent-section)
 
 Satıcının B2B Satış ve Sipariş Koşulları her iki senaryoda da geçerlidir. Ödeme belgesi alıcıya ve yönteme göre değişir. Seçim değiştiğinde ödeme koşulları kabulü sıfırlanır; belge açmak kabul vermek değildir. Örnek belge sürümü 1.1.
 
