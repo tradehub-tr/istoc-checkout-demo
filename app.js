@@ -1,12 +1,12 @@
 (() => {
   'use strict';
-  const {fixture, documents} = JSON.parse(document.getElementById('demo-data').textContent);
+  const {fixture, documents, version} = JSON.parse(document.getElementById('demo-data').textContent);
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
   const money = (value) => new Intl.NumberFormat('tr-TR', {style:'currency', currency:'TRY'}).format(value);
   const escape = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const query = new URLSearchParams(location.search);
-  const state = {owner:query.get('alici') === 'istoc' ? 'istoc':'seller', method:query.get('yontem') === 'kart' ? 'card':'bank', note:'', doc:null};
+  const state = {owner:query.get('alici') === 'istoc' ? 'istoc':'seller', method:query.get('yontem') === 'kart' ? 'card':'bank', step:[1,2,3].includes(Number(query.get('adim')))?Number(query.get('adim')):1, note:'', doc:null};
   const payKey = () => `${state.owner}_${state.method}`;
   const recipient = () => state.owner === 'istoc' ? 'İstoç.com işletmecisi' : fixture.seller;
   let toastTimer;
@@ -23,21 +23,42 @@
   }
   function render() {
     const platform=state.owner==='istoc', card=state.method==='card';
+    const copy=documents[payKey()].checkout;
     $$('[data-scenario]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scenario===state.owner)));
+    $$('input[name="recipient"]').forEach(r=>{r.checked=r.value===state.owner;r.closest('.demo-recipient').classList.toggle('is-selected',r.checked);});
+    $$('[data-payment-step]').forEach(b=>{const active=Number(b.dataset.paymentStep)===state.step;if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');b.classList.toggle('is-complete',Number(b.dataset.paymentStep)<state.step);});
+    $$('[data-step-panel]').forEach(panel=>panel.hidden=Number(panel.dataset.stepPanel)!==state.step);
+    $('#payment-prev').hidden=state.step===1;
+    $('#payment-next').textContent=['Ödeme yöntemine geç','Koşulları gör','Sipariş onayına geç'][state.step-1];
+    $('#payment-step-count').textContent=`Adım ${state.step} / 3`;
     $$('input[name="method"]').forEach(r=>{r.checked=r.value===state.method;r.closest('.demo-method').classList.toggle('is-selected',r.checked);});
     $('#method-payee-label').textContent=(platform?'İSTOÇ.COM':'ÖRNEK ELEKTRİK')+' İÇİN ÖDEME YÖNTEMİ';
     $('#payee-name').textContent=platform?'İstoç.com':fixture.sellerShort;
     $('#payee-kind').textContent=platform?'Satıcı adına tahsilat · Koşulları görüntüle':'Doğrudan satıcıya · Koşulları görüntüle';
     $('.payee-symbol').innerHTML=platform?'<img src="assets/istoc-logo.png" alt="İstoç">':'ÖE';
     $('#payee-card').href='belgeler/'+documents[payKey()].file;
-    $('#payment-terms-link').textContent=(platform?'İstoç.com üzerinden ':'satıcıya doğrudan ')+(card?'kartla Ödeme Koşullarını':'havale ile Ödeme Koşullarını');
+    $('#payment-terms-link').textContent=copy.consentLabel;
     $('#payment-terms-link').href='belgeler/'+documents[payKey()].file;
+    $('#recipient-summary').textContent=platform
+      ? 'Ürünün satıcısı Örnek Elektrik Ltd. Şti. olarak kalır. İstoç.com, bu örnek modelde satıcı adına ödeme alır.'
+      : 'Ürünün satıcısı ve ödeme alıcısı Örnek Elektrik Ltd. Şti.’dir. İstoç.com platform hizmeti sunar.';
+    $('#scenario-title').textContent=copy.title;
+    $('#scenario-payment').textContent=copy.payment;
+    $('#scenario-role').textContent=copy.role;
+    $('#scenario-recipient').textContent=recipient();
+    $('#scenario-recipient').href='belgeler/'+documents[payKey()].file;
+    $('#scenario-method').textContent=copy.methodLabel;
+    $('#scenario-payment-doc').textContent=documents[payKey()].title;
+    $('#scenario-payment-doc').href='belgeler/'+documents[payKey()].file;
+    $('#scenario-consent').innerHTML=`<a href="belgeler/${documents.sale.file}" data-doc="sale">${escape(fixture.seller)}’nin B2B Satış ve Sipariş Koşullarını</a> ve <a href="belgeler/${documents[payKey()].file}" data-doc="payment">${escape(copy.consentLabel)}</a> kabul ediyorum.`;
+    $('#payee-explanation').textContent=platform?'İstoç.com, bu örnek modelde satıcı adına tahsilat yapar. Ürünün satıcısı Örnek Elektrik’tir.':'Ödeme doğrudan Örnek Elektrik’e yapılır. İstoç.com platform hizmeti sunar.';
     $('#payment-detail').innerHTML=card
       ? `<div class="payment-tags"><span>VISA</span><span>Mastercard</span><b>Tek çekim</b></div><p>Kartınızdan <strong>${money(fixture.total)}</strong> tahsil edilir. Ödeme <strong>Örnek Ödeme Kuruluşu</strong> aracılığıyla <strong>${recipient()}</strong> adına işlenir.</p><p class="payment-small">Kart işlemi bu önizlemede yalnızca örneklenir; kart bilgisi alınmaz.</p>`
       : `<p>Ödeme alıcısı: <strong>${recipient()}</strong></p><p>Havale açıklaması: <strong>${fixture.order}</strong>. Hesaba ulaşan ödeme doğrulandıktan sonra siparişin ödeme durumu güncellenir.</p><p class="payment-small">Banka hesap bilgileri son inceleme adımında gösterilir.</p>`;
     const url=new URL(location.href);
     url.searchParams.set('alici',state.owner);
     url.searchParams.set('yontem',card?'kart':'havale');
+    url.searchParams.set('adim',String(state.step));
     history.replaceState(null,'',url);
     syncConsent();
   }
@@ -61,7 +82,7 @@
   }
   function review() {
     if($('#summary-place-order-btn').disabled)return;
-    flow('Siparişinizi gözden geçirin',`<p class="flow-note">Örnek sipariş · Gerçek ödeme ve sipariş oluşturulmaz.</p><div class="flow-facts"><div><span>Ürünün satıcısı</span><strong>${fixture.sellerShort}</strong></div><div><span>Ödeme alıcısı</span><strong>${recipient()}</strong></div><div><span>Ödeme yöntemi</span><strong>${state.method==='bank'?'Havale / EFT':'Kredi / banka kartı'}</strong></div><div><span>Ürün</span><strong>50 adet · Beyaz grup priz</strong></div><div><span>Toplam</span><strong>${money(fixture.total)}</strong></div></div><p class="flow-note">Kabul edilen belgeler: Satıcının B2B Satış ve Sipariş Koşulları (v1.0) ve ${escape(documents[payKey()].title)} (v1.0).</p><button class="demo-primary" id="demo-confirm">${state.method==='bank'?'Siparişi onayla ve banka bilgilerini gör':money(fixture.total)+' öde · Örnek işlem'}</button>`);
+    flow('Siparişinizi gözden geçirin',`<p class="flow-note">Örnek sipariş · Gerçek ödeme ve sipariş oluşturulmaz.</p><div class="flow-facts"><div><span>Ürünün satıcısı</span><strong>${fixture.sellerShort}</strong></div><div><span>Ödeme alıcısı</span><strong>${recipient()}</strong></div><div><span>Ödeme yöntemi</span><strong>${state.method==='bank'?'Havale / EFT':'Kredi / banka kartı'}</strong></div><div><span>Ürün</span><strong>50 adet · Beyaz grup priz</strong></div><div><span>Toplam</span><strong>${money(fixture.total)}</strong></div></div><p class="flow-note">Kabul edilen belgeler: Satıcının B2B Satış ve Sipariş Koşulları (v${version}) ve ${escape(documents[payKey()].title)} (v${version}).</p><button class="demo-primary" id="demo-confirm">${state.method==='bank'?'Siparişi onayla ve banka bilgilerini gör':money(fixture.total)+' öde · Örnek işlem'}</button>`);
   }
   function complete() {
     if(state.method==='bank') {
@@ -73,7 +94,14 @@
   document.addEventListener('click',(event)=>{
     const target=event.target.closest('button,a');
     if(!target)return;
-    if(target.dataset.scenario) { if(state.owner!==target.dataset.scenario){state.owner=target.dataset.scenario;invalidate();render();}return; }
+    if(target.dataset.scenario) { if(state.owner!==target.dataset.scenario){state.owner=target.dataset.scenario;invalidate();}state.step=1;render();return; }
+    if(target.dataset.paymentStep){state.step=Number(target.dataset.paymentStep);render();return;}
+    if(target.id==='payment-prev'){state.step=Math.max(1,state.step-1);render();return;}
+    if(target.id==='payment-next'){
+      if(state.step<3){state.step++;render();}
+      else {const consent=$('#consent-section');consent.scrollIntoView({behavior:'smooth',block:'center'});$('#business-consent').focus({preventScroll:true});}
+      return;
+    }
     if(target.dataset.doc) { event.preventDefault();openDocument(target.dataset.doc);return; }
     if(target.hasAttribute('data-close')) {target.closest('dialog')?.close();return;}
     if(target.dataset.collapse) {const panel=document.getElementById(target.dataset.collapse);panel.hidden=!panel.hidden;target.setAttribute('aria-expanded',String(!panel.hidden));if(!target.classList.contains('co-product-head'))target.textContent=panel.hidden?'Düzenle':'Kapat';return;}
@@ -86,7 +114,7 @@
     if(target.id==='document-print'){window.print();return;}
     if(target.id==='document-download'){
       const d=documents[state.doc];
-      const html='<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(d.title)+'</title><style>body{font:15px/1.8 Arial,sans-serif;max-width:820px;margin:40px auto;padding:0 20px;color:#333}h1{font-size:26px}h3{margin-top:25px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ddd;padding:12px;text-align:left}.document-notice{padding:15px;background:#fff8e8}.document-facts{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:20px 0}.document-facts span{display:block;color:#888;font-size:12px}.document-highlight{background:#f6f6f6;padding:15px}.document-highlight>span,.document-highlight>strong{display:block}</style><h1>'+escape(d.title)+'</h1><p>Örnek belge · 8 Eylül 2026 · Sipariş '+fixture.order+' · Sürüm 1.0</p>'+d.body+'</html>';
+      const html='<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(d.title)+'</title><style>body{font:15px/1.8 Arial,sans-serif;max-width:820px;margin:40px auto;padding:0 20px;color:#333}h1{font-size:26px}h3{margin-top:25px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ddd;padding:12px;text-align:left}.document-notice{padding:15px;background:#fff8e8}.document-facts{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:20px 0}.document-facts span{display:block;color:#888;font-size:12px}.document-highlight{background:#f6f6f6;padding:15px}.document-highlight>span,.document-highlight>strong{display:block}</style><h1>'+escape(d.title)+'</h1><p>Örnek belge · 8 Eylül 2026 · Sipariş '+fixture.order+' · Sürüm '+escape(version)+'</p>'+d.body+'</html>';
       const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=d.file;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);return;
     }
     if(target.dataset.action==='edit-address'){flow('Teslimat adresini düzenle',`<label for="demo-address">Örnek işletme teslimat adresi</label><textarea id="demo-address">${escape($('#shipping-address-text').textContent)}</textarea><p class="flow-note">Değişiklik yalnızca bu önizlemede tutulur.</p><button class="demo-primary" id="address-save">Adresi kaydet</button>`);return;}
@@ -98,6 +126,7 @@
     if(target.closest('#checkout-items') && target.getAttribute('aria-expanded')){const content=target.nextElementSibling;if(content){content.hidden=!content.hidden;target.setAttribute('aria-expanded',String(!content.hidden));}}
   });
   document.addEventListener('change',(event)=>{
+    if(event.target.matches('input[name="recipient"]')){state.owner=event.target.value;invalidate();render();}
     if(event.target.matches('input[name="method"]')){state.method=event.target.value;invalidate();render();}
     if(event.target.matches('#business-consent,#terms-consent'))syncConsent();
     if(event.target.matches('[data-demo-field]'))invalidate('Fatura bilgileriniz değişti. Sipariş koşullarını yeniden kabul ediniz.');
