@@ -10,8 +10,10 @@ Statik HTML tasarım örneğidir. Gerçek sipariş, ödeme veya kullanıcı hesa
 
 [Satıcıya ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=seller&yontem=havale#consent-section) · [İstoç üzerinden ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=istoc&yontem=havale#consent-section)
 
-Satıcının B2B Satış ve Sipariş Koşulları her iki senaryoda da geçerlidir. Ödeme belgesi alıcıya ve yönteme göre değişir. Seçim değiştiğinde ödeme koşulları kabulü sıfırlanır; belge açmak kabul vermek değildir. Örnek belge sürümü 1.1.
+Satıcının B2B Satış ve Sipariş Koşulları her iki senaryoda da geçerlidir. Ödeme belgesi alıcıya ve yönteme göre değişir. Seçim değiştiğinde ödeme koşulları kabulü sıfırlanır; belge açmak kabul vermek değildir. Örnek belge sürümü 1.2.
 
 İstoç adına tahsilat bu demoda incelenmek üzere seçilmiş örnek modeldir. Gerçek tahsilat yetkisi ve hizmet modeli ayrıca doğrulanmalıdır. [FCA ödeme hizmetleri açıklaması](https://www.fca.org.uk/firms/consider-if-you-provide-payment-services).
 
 GitHub Pages: main dalı, / (root) dizini.
+
+KDV hesaplaması henüz eklenmemiştir. ₺31.850 örnek toplamı değiştirilmemiştir; KDV’nin hesaplanıp tutara eklenmediği sipariş özetinde ve belgelerde belirtilir.
