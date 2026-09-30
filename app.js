@@ -8,7 +8,7 @@
   const query = new URLSearchParams(location.search);
   const state = {owner:query.get('alici') === 'istoc' ? 'istoc':'seller', method:query.get('yontem') === 'kart' ? 'card':'bank', note:'', doc:null};
   const payKey = () => `${state.owner}_${state.method}`;
-  const recipient = () => state.owner === 'istoc' ? 'İstoç.com işletmecisi' : fixture.seller;
+  const recipient = () => state.owner === 'istoc' ? 'iStoc.com işletmecisi' : fixture.seller;
   let toastTimer;
   function toast(message) { $('#toast').textContent=message; $('#toast').hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>$('#toast').hidden=true,3600); }
   function invalidate(message='Ödeme seçiminiz değişti. Güncel ödeme koşullarını yeniden kabul ediniz.') {
@@ -26,14 +26,14 @@
     const copy=documents[payKey()].checkout;
     $$('[data-scenario]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scenario===state.owner)));
     $$('input[name="method"]').forEach(r=>{r.checked=r.value===state.method;r.closest('.demo-method').classList.toggle('is-selected',r.checked);});
-    $('#method-payee-label').textContent=(platform?'İSTOÇ.COM':'ÖRNEK ELEKTRİK')+' İÇİN ÖDEME YÖNTEMİ';
-    $('#payee-name').textContent=platform?'İstoç.com':fixture.sellerShort;
+    $('#method-payee-label').textContent=(platform?'iStoc.com':'ÖRNEK ELEKTRİK')+' İÇİN ÖDEME YÖNTEMİ';
+    $('#payee-name').textContent=platform?'iStoc.com':fixture.sellerShort;
     $('#payee-kind').textContent=platform?'Satıcı adına tahsilat · Koşulları görüntüle':'Doğrudan satıcıya · Koşulları görüntüle';
-    $('.payee-symbol').innerHTML=platform?'<img src="assets/istoc-logo.png" alt="İstoç">':'ÖE';
+    $('.payee-symbol').innerHTML=platform?'<img src="assets/istoc-logo.png" alt="iStoc">':'ÖE';
     $('#payee-card').href='belgeler/'+documents[payKey()].file;
     $('#payment-terms-link').textContent=copy.consentLabel;
     $('#payment-terms-link').href='belgeler/'+documents[payKey()].file;
-    $('#payee-explanation').textContent=platform?'İstoç.com, bu örnek modelde satıcı adına tahsilat yapar. Ürünün satıcısı Örnek Elektrik’tir.':'Ödeme doğrudan Örnek Elektrik’e yapılır. İstoç.com platform hizmeti sunar.';
+    $('#payee-explanation').textContent=platform?'iStoc.com, bu örnek modelde satıcı adına tahsilat yapar. Ürünün satıcısı Örnek Elektrik’tir.':'Ödeme doğrudan Örnek Elektrik’e yapılır. iStoc.com platform hizmeti sunar.';
     $('#payment-detail').innerHTML=card
       ? `<div class="payment-tags"><span>VISA</span><span>Mastercard</span><b>Tek çekim</b></div><p>Kartınızdan <strong>${money(fixture.total)}</strong> tahsil edilir. Ödeme <strong>Örnek Ödeme Kuruluşu</strong> aracılığıyla <strong>${recipient()}</strong> adına işlenir.</p><p class="payment-small">Kart işlemi bu önizlemede yalnızca örneklenir; kart bilgisi alınmaz.</p>`
       : `<p>Ödeme alıcısı: <strong>${recipient()}</strong></p><p>Havale açıklaması: <strong>${fixture.order}</strong>. Hesaba ulaşan ödeme doğrulandıktan sonra siparişin ödeme durumu güncellenir.</p><p class="payment-small">Banka hesap bilgileri son inceleme adımında gösterilir.</p>`;
@@ -50,7 +50,7 @@
     if(!d)return;
     state.doc=resolved;
     $('#document-title').textContent=d.title;
-    $('#document-kicker').textContent=resolved==='sale'?'SATICI ↔ ALICI · SATIŞ KOŞULLARI':resolved==='platform'?'İSTOÇ ↔ KULLANICI · PLATFORM KOŞULLARI':'SEÇİLEN YÖNTEME AİT ÖDEME KOŞULLARI';
+    $('#document-kicker').textContent=resolved==='sale'?'SATICI ↔ ALICI · SATIŞ KOŞULLARI':resolved==='platform'?'iStoc ↔ KULLANICI · PLATFORM KOŞULLARI':'SEÇİLEN YÖNTEME AİT ÖDEME KOŞULLARI';
     $('#document-body').innerHTML=d.body;
     $('#document-open').href='belgeler/'+d.file;
     $('#document-download').setAttribute('aria-label',d.title+' HTML indir');
