@@ -1,4 +1,4 @@
-# iStoc ödeme ve B2B sözleşme önizlemesi
+# Thoptan ödeme ve B2B sözleşme önizlemesi
 
 [Canlı önizleme](https://tradehub-tr.github.io/istoc-checkout-demo/)
 
@@ -6,13 +6,13 @@ Statik HTML tasarım örneğidir. Gerçek sipariş, ödeme veya kullanıcı hesa
 
 Ödeme alanında havale/kart seçilir. Satıcının satış koşulları ve seçilen yöntemin ödeme koşulları, sipariş özetindeki onay metninden açılır. Ayrı bir sözleşme adımı veya adım seçicisi yoktur.
 
-Üstteki satıcı/iStoc düğmeleri demo senaryosunu değiştirir.
+Üstteki satıcı/Thoptan düğmeleri demo senaryosunu değiştirir.
 
-[Satıcıya ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=seller&yontem=havale#consent-section) · [iStoc üzerinden ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=istoc&yontem=havale#consent-section)
+[Satıcıya ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=seller&yontem=havale#consent-section) · [Thoptan üzerinden ödeme örneği](https://tradehub-tr.github.io/istoc-checkout-demo/?alici=thoptan&yontem=havale#consent-section)
 
 Satıcının B2B Satış ve Sipariş Koşulları her iki senaryoda da geçerlidir. Ödeme belgesi alıcıya ve yönteme göre değişir. Seçim değiştiğinde ödeme koşulları kabulü sıfırlanır; belge açmak kabul vermek değildir. Örnek belge sürümü 1.2.
 
-iStoc adına tahsilat bu demoda incelenmek üzere seçilmiş örnek modeldir. Gerçek tahsilat yetkisi ve hizmet modeli ayrıca doğrulanmalıdır. [FCA ödeme hizmetleri açıklaması](https://www.fca.org.uk/firms/consider-if-you-provide-payment-services).
+Thoptan adına tahsilat bu demoda incelenmek üzere seçilmiş örnek modeldir. Gerçek tahsilat yetkisi ve hizmet modeli ayrıca doğrulanmalıdır. [FCA ödeme hizmetleri açıklaması](https://www.fca.org.uk/firms/consider-if-you-provide-payment-services).
 
 GitHub Pages: main dalı, / (root) dizini.
 
