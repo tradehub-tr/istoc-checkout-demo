@@ -52,8 +52,6 @@
     $('#document-title').textContent=d.title;
     $('#document-kicker').textContent=resolved==='sale'?'SATICI ↔ ALICI · SATIŞ KOŞULLARI':resolved==='platform'?'Thoptan ↔ KULLANICI · PLATFORM KOŞULLARI':'SEÇİLEN YÖNTEME AİT ÖDEME KOŞULLARI';
     $('#document-body').innerHTML=d.body;
-    $('#document-open').href='belgeler/'+d.file;
-    $('#document-download').setAttribute('aria-label',d.title+' HTML indir');
     if(!$('#document-dialog').open)$('#document-dialog').showModal();
     $('#document-body').scrollTop=0;
   }
@@ -86,12 +84,6 @@
     if(target.id==='demo-confirm'){complete();return;}
     if(target.id==='simulate-success'){flow('Örnek ödeme tamamlandı',`<div class="flow-note-box">Bu bir tasarım simülasyonudur. Hiçbir karttan tahsilat yapılmadı.</div><div class="flow-facts"><div><span>Ödeme alıcısı</span><strong>${recipient()}</strong></div><div><span>Örnek işlem tutarı</span><strong>${money(fixture.total)}</strong></div><div><span>Örnek durum</span><strong>Ödeme alındı</strong></div></div><p class="flow-note">${escape(fixture.taxNote)}</p><button class="demo-primary" data-close>Ödeme ekranına dön</button>`);return;}
     if(target.id==='coupon-apply'){const field=$('#coupon-code');$('#coupon-error').textContent=field.value.trim()?'Bu örnek sipariş için kullanılabilir kupon bulunmuyor.':'Lütfen bir kupon kodu giriniz.';$('#coupon-error').hidden=false;return;}
-    if(target.id==='document-print'){window.print();return;}
-    if(target.id==='document-download'){
-      const d=documents[state.doc];
-      const html='<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(d.title)+'</title><style>body{font:15px/1.8 Arial,sans-serif;max-width:820px;margin:40px auto;padding:0 20px;color:#333}h1{font-size:26px}h3{margin-top:25px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ddd;padding:12px;text-align:left}.document-notice{padding:15px;background:#fff8e8}.document-facts{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:20px 0}.document-facts span{display:block;color:#888;font-size:12px}.document-highlight{background:#f6f6f6;padding:15px}.document-highlight>span,.document-highlight>strong{display:block}</style><h1>'+escape(d.title)+'</h1><p>Örnek belge · 8 Eylül 2026 · Sipariş '+fixture.order+' · Sürüm '+escape(version)+'</p>'+d.body+'</html>';
-      const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=d.file;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);return;
-    }
     if(target.dataset.action==='edit-address'){flow('Teslimat adresini düzenle',`<label for="demo-address">Örnek işletme teslimat adresi</label><textarea id="demo-address">${escape($('#shipping-address-text').textContent)}</textarea><p class="flow-note">Değişiklik yalnızca bu önizlemede tutulur.</p><button class="demo-primary" id="address-save">Adresi kaydet</button>`);return;}
     if(target.id==='address-save'){const val=$('#demo-address').value.trim();if(!val){$('#demo-address').setCustomValidity('Adres giriniz.');$('#demo-address').reportValidity();return;}$('#shipping-address-text').textContent=val;$('#flow-dialog').close();invalidate('Teslimat adresiniz değişti. Sipariş koşullarını yeniden kabul ediniz.');toast('Örnek teslimat adresi güncellendi.');return;}
     if(target.dataset.action==='seller-note'){flow('Satıcıya sipariş notu',`<label for="demo-note">Örnek Elektrik için notunuz</label><textarea id="demo-note" placeholder="Örneğin: Teslimattan önce haber verilmesini rica ederiz.">${escape(state.note)}</textarea><p class="flow-note">Notunuz satıcı tarafından ayrıca kabul edilmedikçe satış koşullarını değiştirmez.</p><button class="demo-primary" id="note-save">Notu kaydet</button>`);return;}
